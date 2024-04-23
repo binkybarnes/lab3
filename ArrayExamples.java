@@ -24,7 +24,7 @@ public class ArrayExamples {
   // lowest number when calculating. Returns 0 if there are no elements or just
   // 1 element in the array
   static double averageWithoutLowest(double[] arr) {
-    if (arr.length < 2) {
+    if (arr.length < 1) {
       return 0.0;
     }
     double lowest = arr[0];
@@ -34,10 +34,13 @@ public class ArrayExamples {
       }
     }
     double sum = 0;
+    boolean flag = false;
     for (double num : arr) {
-      if (num != lowest) {
-        sum += num;
+      if (flag == false && num == lowest) {
+        flag = true;
+        continue;
       }
+      sum += num;
     }
     return sum / (arr.length - 1);
   }
